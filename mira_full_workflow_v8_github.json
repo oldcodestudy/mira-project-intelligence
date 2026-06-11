@@ -1,0 +1,287 @@
+{
+  "name": "Mira - AI Project Intelligence Assistant v8",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "name": "Telegram Trigger",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        80,
+        300
+      ],
+      "webhookId": "mira-telegram-v8",
+      "id": "telegram-trigger"
+    },
+    {
+      "parameters": {
+        "resource": "text",
+        "operation": "message",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "messages": {
+          "values": [
+            {
+              "role": "system",
+              "content": "You are Mira, an AI project intelligence assistant for Nexora Pvt. Ltd. You help PMs and TPMs with the ABCDE Ltd. AI Adoption Project.\n\nRead the user message and generate the appropriate response.\n\nWHAT TO GENERATE:\n- Project plan/phases/milestones/timeline request: generate Project Plan with all 8 phases table\n- Risk/risks/challenges request: generate Risk Assessment with all 10 risks table\n- Status/tasks/sprint/overdue/blocked request: generate Status Report with verified counts\n- Stakeholder update Sprint 2: generate Sprint 2 email\n- Stakeholder update Sprint 3: generate Sprint 3 email\n- Multiple topics: generate all relevant sections separated by ---\n\nOUTPUT FORMAT FOR PROJECT PLAN:\n## Project Plan: AI Adoption Project for ABCDE Ltd.\n\n### Overview\n[2-3 sentences from description]\n\n### Phases\n| Phase | Phase Name | Start Week | End Week | Key Activities | Deliverables |\n|---|---|---|---|---|---|\n[All 8 phases from timeline CSV]\n\n### Success Criteria\n[Goals from description only]\n\nOUTPUT FORMAT FOR RISK ASSESSMENT:\n## Risk Assessment: AI Adoption Project for ABCDE Ltd.\n\n| Risk ID | Category | Risk | Impact | Mitigation |\n|---|---|---|---|---|\n[All 10 risks from risk CSV]\n\nOUTPUT FORMAT FOR STATUS REPORT:\n## Project Status Report - June 1 2026\n\nDone: [count] | In Progress: [count] | To Do: [count] | Total: [count] | Overdue: [count]\n\n### In Progress\n[table]\n\n### Overdue Tasks\n[table]\n\nOUTPUT FORMAT FOR STAKEHOLDER EMAIL:\n## Stakeholder Update - Sprint [X]\n\n[Professional email under 250 words]\n\nRULES:\n1. Use ONLY data provided. Never invent phases, risks, tasks or assignees.\n2. For status use VERIFIED TASK COUNTS exactly.\n3. For plans include ALL 8 phases.\n4. For risks include ALL 10 risks.\n\nPROJECT DESCRIPTION:\nABCDE Ltd., a mid-sized enterprise specialising in logistics and supply chain solutions, is embarking on an AI adoption initiative to enhance operational efficiency, improve customer experience, and drive data-driven decision-making across the organisation. This project will focus on integrating AI-powered tools into core business functions, including demand forecasting, route optimization, inventory management, and customer support. By leveraging machine learning models and natural language processing, the company aims to reduce manual overhead, minimise errors, and uncover actionable insights from historical and real-time data. The AI adoption project will be implemented in phases, beginning with a detailed assessment of current workflows and data infrastructure, followed by pilot implementations in targeted departments. Key goals include reducing delivery delays by 15%, lowering operational costs by 10%, and improving service responsiveness.\n\nTIMELINE CSV:\nphase,phase_name,start_week,end_week,key_activities,milestones_deliverables\n1,Project Initiation,1,2,Define project scope; Form cross-functional team,Project charter signed off; Team structure finalized\n2,Current State Analysis,3,4,Assess existing processes; Identify data sources,Current systems audit report; Gap analysis report\n3,Use Case Selection,5,6,Shortlist priority AI use cases,Final list of prioritised use cases with success criteria\n4,Pilot Design,7,10,Data collection; Model design and development,Working prototype models; Data pipelines established\n5,Pilot Implementation,11,14,Deploy AI models in test environments; Monitor performance,Pilot results report; User feedback\n6,Evaluation and Iteration,15,16,Evaluate pilot outcomes; Adjust models,Updated models and process refinements\n7,Full Deployment,17,22,Scale AI models across departments; Train staff,Full production rollout; Training completed\n8,Monitoring and Review,23,24,Continuous monitoring; Final project review,Project closure report; Recommendations\n\nRISK CSV:\nrisk_id,category,risk_challenge,impact,mitigation_strategy\nR01,Data Quality & Availability,Incomplete or unstructured data,Poor model performance,Early data audits and data governance\nR02,Integration Issues,Difficulty integrating AI with legacy systems,Delays and disruptions,Integration roadmap and APIs/middleware\nR03,Talent & Skills Gap,Lack of internal AI/ML expertise,Overreliance on vendors,Staff training and specialized hiring\nR04,Change Resistance,Employees resist AI-driven workflows,Low adoption,Change management and early engagement\nR05,Ethical & Legal Concerns,Biased models or data privacy violations,Legal repercussions,Involve legal early; fairness checks\nR06,Cost Overruns,Underestimation of AI development costs,Budget constraints,Realistic budget with contingency funds\nR07,Unrealistic Expectations,Stakeholders expect immediate ROI,Loss of support,Align expectations; show quick wins\nR08,Model Performance Drift,AI models lose accuracy over time,Trust erosion,Regular retraining and monitoring\nR09,Security Vulnerabilities,AI models targeted by adversarial attacks,Data breaches,AI security best practices; pen testing\nR10,Vendor Lock-in,Overdependence on a specific AI platform,Flexibility loss,Open standards; flexible vendor terms\n\nVERIFIED TASK COUNTS:\nDone: 5 | In Progress: 3 | To Do: 17 | Total: 25 | Overdue: 8\n\nIN PROGRESS:\n  T006: Identify data gaps and quality issues | Sprint 2 | Due: 2026-04-21\n  T007: Shortlist AI use cases | Sprint 3 | Due: 2026-04-28\n  T025: Legal review of data usage | Sprint 3 | Due: 2026-04-28\n\nOVERDUE:\n  T006 | Identify data gaps and quality issues | due 2026-04-21 | 41 days | Priya Nair | Sprint 2\n  T007 | Shortlist AI use cases | due 2026-04-28 | 34 days | Arjun Mehta | Sprint 3\n  T008 | Define success criteria for each use case | due 2026-05-02 | 30 days | Sarah Lin | Sprint 3\n  T009 | Vendor evaluation for ML platform | due 2026-05-05 | 27 days | James Wong | Sprint 3\n  T010 | Collect historical demand data | due 2026-05-12 | 20 days | Priya Nair | Sprint 4\n  T011 | Data cleaning and preprocessing pipeline | due 2026-05-19 | 13 days | Priya Nair | Sprint 4\n  T012 | Design demand forecasting model | due 2026-05-19 | 13 days | Ravi Kumar | Sprint 4\n  T025 | Legal review of data usage | due 2026-04-28 | 34 days | Sarah Lin | Sprint 3\n\nFULL TASK BOARD CSV:\ntask_id,task_name,status,assignee,priority,sprint,due_date,labels,description\nT001,Define project scope and objectives,Done,Arjun Mehta,High,Sprint 1,2026-04-07,Planning,\"Document project scope, goals, and success criteria for AI adoption\"\nT002,Form cross-functional task force,Done,Sarah Lin,High,Sprint 1,2026-04-07,Planning,\"Identify and onboard team members from data science, IT, and business units\"\nT003,Initial stakeholder alignment meeting,Done,Arjun Mehta,High,Sprint 1,2026-04-10,Planning,Present project charter and get sign-off from leadership\nT004,Audit existing data infrastructure,Done,Priya Nair,High,Sprint 2,2026-04-18,Analysis,\"Assess current databases, data pipelines, and data quality\"\nT005,Map current logistics workflows,Done,James Wong,Medium,Sprint 2,2026-04-18,Analysis,\"Document end-to-end processes for demand forecasting, routing, and inventory\"\nT006,Identify data gaps and quality issues,In Progress,Priya Nair,High,Sprint 2,2026-04-21,Analysis,Gap analysis report comparing available data vs requirements for AI models\nT007,Shortlist AI use cases,In Progress,Arjun Mehta,High,Sprint 3,2026-04-28,Use Cases,\"Evaluate and prioritize: demand forecasting, route optimization, inventory mgmt, customer support\"\nT008,Define success criteria for each use case,To Do,Sarah Lin,High,Sprint 3,2026-05-02,Use Cases,\"Set measurable KPIs: 15% reduction in delivery delays, 10% cost reduction\"\nT009,Vendor evaluation for ML platform,To Do,James Wong,Medium,Sprint 3,2026-05-05,Use Cases,\"Compare cloud ML platforms (AWS SageMaker, Azure ML, GCP Vertex AI)\"\nT010,Collect historical demand data,To Do,Priya Nair,High,Sprint 4,2026-05-12,Data Prep,Extract 2 years of demand data from ERP system\nT011,Data cleaning and preprocessing pipeline,To Do,Priya Nair,High,Sprint 4,2026-05-19,Data Prep,\"Build automated pipeline for data cleaning, normalization, feature engineering\"\nT012,Design demand forecasting model,To Do,Ravi Kumar,High,Sprint 4,2026-05-19,Model Dev,\"Select algorithm (LSTM, Prophet, XGBoost), define input features\"\nT013,Design route optimization model,To Do,Ravi Kumar,Medium,Sprint 5,2026-06-09,Model Dev,\"Graph-based optimization with constraints (time windows, vehicle capacity)\"\nT014,Build model training pipeline,To Do,Ravi Kumar,High,Sprint 5,2026-06-16,Model Dev,\"Automated training, validation, and model versioning\"\nT015,Deploy demand model to test environment,To Do,James Wong,High,Sprint 6,2026-06-23,Pilot,\"Deploy to staging, set up monitoring, define test scenarios\"\nT016,Run pilot with logistics team,To Do,Arjun Mehta,High,Sprint 6,2026-06-30,Pilot,2-week pilot with 3 logistics coordinators using demand forecasting predictions\nT017,Collect pilot feedback and metrics,To Do,Sarah Lin,High,Sprint 7,2026-07-07,Evaluation,\"Survey users, measure prediction accuracy, compare with manual forecasts\"\nT018,Iterate on model based on feedback,To Do,Ravi Kumar,Medium,Sprint 7,2026-07-14,Evaluation,\"Adjust features, retrain model, validate improvements\"\nT019,Prepare production deployment plan,To Do,James Wong,High,Sprint 8,2026-07-21,Deployment,\"Infrastructure scaling, rollback plan, monitoring setup\"\nT020,Staff training program,To Do,Sarah Lin,Medium,Sprint 8,2026-07-28,Deployment,Train 25 logistics staff on using AI-powered forecasting dashboard\nT021,Full production rollout,To Do,Arjun Mehta,High,Sprint 9,2026-08-04,Deployment,Go-live for demand forecasting across all 3 distribution centers\nT022,Set up continuous monitoring,To Do,Priya Nair,High,Sprint 9,2026-08-11,Monitoring,\"Model performance dashboards, drift detection alerts, retraining triggers\"\nT023,Project closure report,To Do,Arjun Mehta,Medium,Sprint 10,2026-08-18,Monitoring,\"Final report: outcomes vs targets, lessons learned, recommendations for Phase 2\"\nT024,Security review of AI infrastructure,To Do,James Wong,High,Sprint 5,2026-06-09,Security,Penetration testing and vulnerability assessment - security team slot confirmed for June 2026\nT025,Legal review of data usage,In Progress,Sarah Lin,High,Sprint 3,2026-04-28,Compliance,Review data privacy compliance for using customer delivery data in ML models\n\nSPRINT 2 DATA:\nSPRINT 2 TASK DATA:\nCompleted (2): T004 Audit existing data infrastructure | T005 Map current logistics workflows\nIn Progress (1): T006 Identify data gaps and quality issues (Due 2026-04-21, 41 days overdue)\nTo Do (0): None. Sprint 2 Health: Red\n\nSPRINT 3 DATA:\nSPRINT 3 TASK DATA:\nCompleted (0): None\nIn Progress (2): T007 Shortlist AI use cases (34 days overdue) | T025 Legal review (34 days overdue)\nTo Do (2): T008 Define success criteria (30 days overdue) | T009 Vendor evaluation (27 days overdue)\nSprint 3 Health: Red\n\nToday is June 1 2026. Current project week: Week 10 of 24."
+            },
+            {
+              "role": "user",
+              "content": "={{ $json.message.text }}"
+            }
+          ]
+        },
+        "options": {
+          "maxTokens": 4000
+        }
+      },
+      "id": "mira-openai",
+      "name": "Mira - OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        300,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "conditions": [
+            {
+              "leftValue": "={{ $json.message.content.toLowerCase().includes('stakeholder') || $json.message.content.toLowerCase().includes('status report') }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "if-email",
+      "name": "If Email Needed",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        520,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "send",
+        "to": "yeoldstudy@gmail.com",
+        "subject": "={{ 'Mira: Project Report - ' + $('Convert to HTML').item.json.dateStr }}",
+        "message": "={{ $json.emailHtml }}",
+        "options": {
+          "emailType": "html"
+        }
+      },
+      "id": "gmail-send",
+      "name": "Gmail - Send Report",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        960,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "o1",
+              "name": "mira_output",
+              "value": "={{ $('Mira - OpenAI').item.json.message.content }}",
+              "type": "string"
+            },
+            {
+              "id": "o2",
+              "name": "agent",
+              "value": "Mira AI",
+              "type": "string"
+            },
+            {
+              "id": "o3",
+              "name": "chatInput",
+              "value": "={{ $('Telegram Trigger').item.json.message.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "final-output",
+      "name": "Final Output",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        740,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://us.cloud.langfuse.com/api/public/traces",
+        "authentication": "none",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Basic YOUR_BASE64_ENCODED_LANGFUSE_CREDENTIALS"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\"name\": \"Mira\", \"input\": \"={{ $json.chatInput.substring(0,300) }}\", \"output\": \"={{ $json.mira_output.substring(0,500) }}\", \"metadata\": {\"model\": \"gpt-4o\"}}",
+        "options": {}
+      },
+      "id": "langfuse-node",
+      "name": "Langfuse - Mira Trace",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        960,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{ $('Mira - OpenAI').item.json.message.content.length > 4000 ? $('Mira - OpenAI').item.json.message.content.substring(0, 3900) + '\\n\\n[Response truncated. Full report sent to email.]' : $('Mira - OpenAI').item.json.message.content }}",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "id": "telegram-send",
+      "name": "Telegram - Send Response",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1180,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const md = $('Mira - OpenAI').item.json.message.content;\nconst now = new Date();\nconst dateStr = now.toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' });\n\nlet html = md\n  .replace(/^---$/gm, '<hr style=\"border:none;border-top:1px solid #E0E0E0;margin:20px 0\">')\n  .replace(/^## (.+)$/gm, '<h2 style=\"color:#333333;font-family:Arial;font-size:16px;font-weight:bold;border-bottom:2px solid #E0E0E0;padding-bottom:6px;margin-top:24px\">$1</h2>')\n  .replace(/^### (.+)$/gm, '<h3 style=\"color:#555555;font-family:Arial;font-size:14px;font-weight:bold;margin-top:16px\">$1</h3>')\n  .replace(/\\*\\*(.+?)\\*\\*/g, '<strong>$1</strong>')\n  .replace(/^- (.+)$/gm, '<li style=\"font-family:Arial;font-size:14px;color:#333;padding:3px 0\">$1</li>')\n  .replace(/(<li[^>]*>.*<\\/li>\\n?)+/gs, '<ul style=\"margin:10px 0;padding-left:20px\">$&</ul>')\n  .replace(/^\\|(.+)\\|$/gm, (match) => {\n    const cells = match.split('|').filter(c => c.trim() !== '');\n    return '<tr>' + cells.map(c => `<td style=\"border:1px solid #E0E0E0;padding:8px 12px;font-family:Arial;font-size:13px;color:#333\">${c.trim()}</td>`).join('') + '</tr>';\n  })\n  .replace(/<tr>(<td[^>]*>[\\s\\-:]+<\\/td>)+<\\/tr>/g, '')\n  .replace(/(<tr>.*<\\/tr>\\n?)+/gs, (match) => {\n    const rows = match.trim().split('\\n');\n    const header = rows[0].replace(/<td/g, '<td style=\"background:#F5F5F5;font-weight:bold;border:1px solid #E0E0E0;padding:8px 12px;font-family:Arial;font-size:13px;color:#333\"');\n    const body = rows.slice(1).join('\\n');\n    return `<table style=\"border-collapse:collapse;width:100%;margin:15px 0\">${header}${body}</table>`;\n  })\n  .replace(/\\n\\n/g, '<br><br>')\n  .replace(/\\n/g, '<br>');\n\nconst emailHtml = `<!DOCTYPE html><html><body style=\"font-family:Arial;max-width:800px;margin:0 auto;padding:20px;color:#333;background:#FFFFFF\">\n<div style=\"background:#F8F8F8;border-left:4px solid #555555;padding:15px 20px;margin-bottom:20px\">\n<p style=\"margin:0;font-size:18px;font-weight:bold;color:#222\">Mira Project Intelligence Report</p>\n<p style=\"margin:4px 0 0;font-size:12px;color:#777\">Generated by Mira for Nexora Pvt. Ltd. | ${dateStr}</p>\n</div>\n<div style=\"padding:0 5px\">\n${html}\n</div>\n<div style=\"margin-top:30px;padding-top:15px;border-top:1px solid #E0E0E0\">\n<p style=\"font-size:11px;color:#999;margin:0\">This report was generated automatically by Mira. Review before sharing externally.</p>\n</div>\n</body></html>`;\n\nreturn [{ json: { emailHtml, dateStr } }];"
+      },
+      "id": "md-to-html",
+      "name": "Convert to HTML",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        740,
+        200
+      ]
+    }
+  ],
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Mira - OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mira - OpenAI": {
+      "main": [
+        [
+          {
+            "node": "If Email Needed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Email Needed": {
+      "main": [
+        [
+          {
+            "node": "Convert to HTML",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Final Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail - Send Report": {
+      "main": [
+        [
+          {
+            "node": "Final Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Final Output": {
+      "main": [
+        [
+          {
+            "node": "Langfuse - Mira Trace",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Langfuse - Mira Trace": {
+      "main": [
+        [
+          {
+            "node": "Telegram - Send Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to HTML": {
+      "main": [
+        [
+          {
+            "node": "Gmail - Send Report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
